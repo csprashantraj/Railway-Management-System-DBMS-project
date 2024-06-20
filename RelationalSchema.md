@@ -12,7 +12,7 @@ CREATE TABLE Station (
     station_type VARCHAR(255) NOT NULL
 );
 ```
-Primary Key: station_id
+Primary Key: `station_id`
 
 ## Train Table
 The `Train` table stores information about trains.
@@ -30,7 +30,7 @@ CREATE TABLE Train (
 );
 ```
 Primary Key: train_no
-Foreign Keys: start_station_code references Station(station_id), end_station_code references Station(station_id)
+Foreign Keys: `start_station_code` references `Station(station_id)`, `end_station_code` references `Station(station_id)`
 
 
 ## Route Table
@@ -50,8 +50,8 @@ CREATE TABLE Route (
     FOREIGN KEY (station_id) REFERENCES Station(station_id)
 );
 ```
-Primary Key: (route_id, sequence_no)
-Foreign Keys: train_no references Train(train_no), station_id references Station(station_id)
+Primary Key: `(route_id, sequence_no)`
+Foreign Keys: `train_no` references `Train(train_no)`, `station_id` references `Station(station_id)`
 
 ## Class Table
 The `Class` table stores information about the classes available on each train.
@@ -65,8 +65,8 @@ CREATE TABLE Class (
     FOREIGN KEY (train_no) REFERENCES Train(train_no)
 );
 ```
-Primary Key: (class_id, train_no)
-Foreign Key: train_no references Train(train_no)
+Primary Key: `(class_id, train_no)`
+Foreign Key: `train_no` references `Train(train_no)`
 
 
 ## Train Fare Table
@@ -82,8 +82,8 @@ CREATE TABLE Train_fare (
     FOREIGN KEY (class_id) REFERENCES Class(class_id)
 );
 ```
-Primary Key: (train_no, class_id)
-Foreign Keys: train_no references Train(train_no), class_id references Class(class_id)
+Primary Key: `(train_no, class_id)`
+Foreign Keys: `train_no` references `Train(train_no)`, `class_id` references `Class(class_id)`
 
 
 ## Coach Table
@@ -98,8 +98,8 @@ CREATE TABLE Coach (
     FOREIGN KEY (class_id) REFERENCES Class(class_id)
 );
 ```
-Primary Key: (coach_no, train_no)
-Foreign Keys: train_no references Train(train_no), class_id references Class(class_id)
+Primary Key: `(coach_no, train_no)`
+Foreign Keys: `train_no` references `Train(train_no)`, `class_id` references `Class(class_id)`
 
 ## Login Details Table
 The `Login_details` table stores user login information.
@@ -110,7 +110,7 @@ CREATE TABLE Login_details (
     mobile_number VARCHAR(20) NOT NULL
 );
 ```
-Primary Key: username
+Primary Key: `username`
 
 ## Ticket Table
 The `Ticket` table stores information about tickets booked by passengers.
@@ -131,8 +131,8 @@ CREATE TABLE Ticket (
     FOREIGN KEY (class_id) REFERENCES Class(class_id)
 );
 ```
-Primary Key: pnr
-Foreign Keys: boarding_station references Station(station_id), destination_station references Station(station_id), train_no references Train(train_no), username references Login_details(username), class_id references Class(class_id)
+Primary Key: `pnr`
+Foreign Keys: `boarding_station` references `Station(station_id)`, `destination_station` references `Station(station_id)`, `train_no` references `Train(train_no)`, `username` references `Login_details(username)`, `class_id` references `Class(class_id)`
 
 ## Payment Table
 The `Payment` table stores information about payments made for tickets.
@@ -146,8 +146,8 @@ CREATE TABLE Payment (
     FOREIGN KEY (pnr) REFERENCES Ticket(pnr)
 );
 ```
-Primary Key: payment_id
-Foreign Key: pnr references Ticket(pnr)
+Primary Key: `payment_id`
+Foreign Key: `pnr` references `Ticket(pnr)`
 
 ## Passenger Table
 The `Passenger` table stores information about passengers associated with a PNR.
@@ -163,8 +163,8 @@ CREATE TABLE Passenger (
     FOREIGN KEY (pnr) REFERENCES Ticket(pnr)
 );
 ```
-Primary Key: (pnr, name)
-Foreign Key: pnr references Ticket(pnr)
+Primary Key: `(pnr, name)`
+Foreign Key: `pnr` references `Ticket(pnr)`
 
 ## Waiting List Table
 The `Inwaiting` table stores information about passengers on the waiting list.
@@ -178,8 +178,8 @@ CREATE TABLE Inwaiting (
     FOREIGN KEY (name) REFERENCES Passenger(name)
 );
 ```
-Primary Key: (pnr, waiting_no)
-Foreign Keys: pnr references Passenger(pnr), name references Passenger(name)
+Primary Key: `(pnr, waiting_no)`
+Foreign Keys: `pnr` references `Passenger(pnr)`, `name` references `Passenger(name)`
 
 ## Booked Seat Table
 The `Booked_seat` table stores information about booked seats on trains.
@@ -198,7 +198,9 @@ CREATE TABLE Booked_seat (
     FOREIGN KEY (name) REFERENCES Passenger(name)
 );
 ```
-Primary Key: (train_no, seat_no, coach_no)
-Foreign Keys: train_no references Train(train_no), coach_no references Coach(coach_no), pnr references Ticket(pnr), name references Passenger(name)
+Primary Key: `(train_no, seat_no, coach_no)`
+Foreign Keys: `train_no` references `Train(train_no)`, `coach_no` references `Coach(coach_no)`, `pnr` references `Ticket(pnr)`, `name` references `Passenger(name)`
 
+```sql
 This `RelationalSchema.md` file provides a comprehensive overview of the database schema for the Railway Reservation System, detailing each table along with their primary keys and foreign keys. This document is essential for understanding the structure and relationships within the database.
+```
