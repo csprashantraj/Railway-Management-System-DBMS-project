@@ -50,7 +50,7 @@ The Railway Reservation System project aims to simplify and enhance the online t
 - If all seats are booked and a ticket is booked, the ticket status is set to waiting. It will be confirmed only if a booked ticket is canceled.
 
 ## ER Diagram
-![ER Diagram](er-diagram.png)
+![ER Diagram](ERdiagram.png)
 
 ## Relational Schema
 The relational schema defines the structure of the database in terms of tables, columns, primary keys, and foreign keys. Detailed schema definitions can be found in the [RelationalSchema.md](RelationalSchema.md) file.
