@@ -65,7 +65,7 @@ Explanation of the normalization process for each table to ensure the schema is 
 All SQL statements for creating tables and inserting sample data are provided in the [SQLCode.sql](SQLCode.sql) file.
 
 ## SQL Queries
-Sample SQL queries to interact with the database and demonstrate its functionality are provided in the [SQLQueries.md](SQLQueries.md) file.
+Sample SQL queries to interact with the database and demonstrate its functionality are provided in the [SQLQueries.md](sqlqueries.md) file.
 
 ## Assumptions
 List of all assumptions made during the design and implementation of the database can be found in the [Assumptions.md](Assumptions.md) file.
